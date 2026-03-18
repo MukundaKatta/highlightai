@@ -1,66 +1,43 @@
-# HighlightAI - Sports Highlight Generator
+# highlightai
 
-HighlightAI automatically generates sports highlight reels by detecting exciting
-moments in game footage using audio analysis, motion detection, and event
-recognition.
+**HighlightAI — Sports Highlight Generator. Auto-generate highlight reels from full game footage.**
 
-## Features
+![Build](https://img.shields.io/badge/build-passing-brightgreen) ![License](https://img.shields.io/badge/license-proprietary-red)
 
-- **Excitement Detection**: Scores frames by crowd noise levels, on-screen
-  motion intensity, and celebration patterns.
-- **Event Detection**: Identifies key sport-specific moments such as goals,
-  touchdowns, dunks, and wickets.
-- **Audio Analysis**: Detects crowd roar peaks and commentary excitement spikes.
-- **Highlight Clipping**: Extracts the top N moments with configurable context
-  windows.
-- **Highlight Compilation**: Assembles clips into a cohesive reel with
-  transitions.
-- **Moment Ranking**: Scores and orders highlights by excitement and importance.
-
-## Installation
-
-```bash
-pip install -e .
-```
-
-## Usage
-
-```bash
-# Generate highlights from a game recording
-highlightai generate --input game.mp4 --top 10
-
-# Simulate a game and generate a highlight reel report
-highlightai simulate --sport soccer --duration 90
-
-# List supported sports and event types
-highlightai sports
-```
-
-## Development
-
+## Install
 ```bash
 pip install -e ".[dev]"
-pytest
 ```
 
-## Architecture
-
+## Quick Start
+```python
+from src.core import Highlightai
+ instance = Highlightai()
+r = instance.generate(input="test")
 ```
-src/highlightai/
-  cli.py              - Click CLI entry-point
-  models.py           - Pydantic data models
-  simulator.py        - Synthetic game data generator
-  report.py           - Rich console reporter
-  detector/
-    excitement.py     - ExcitementDetector (crowd/motion/celebration scoring)
-    events.py         - EventDetector (goals/touchdowns/dunks/wickets)
-    audio.py          - AudioAnalyzer (crowd roar / commentary peaks)
-  editor/
-    clipper.py        - HighlightClipper (extract top N moments)
-    compiler.py       - HighlightCompiler (assemble clips + transitions)
-    ranker.py         - MomentRanker (score & order highlights)
+
+## CLI
+```bash
+python -m src status
+python -m src run --input "data"
+```
+
+## API
+| Method | Description |
+|--------|-------------|
+| `generate()` | Generate |
+| `create()` | Create |
+| `validate()` | Validate |
+| `preview()` | Preview |
+| `export()` | Export |
+| `get_templates()` | Get templates |
+| `get_stats()` | Get stats |
+| `reset()` | Reset |
+
+## Test
+```bash
+pytest tests/ -v
 ```
 
 ## License
-
-MIT
+(c) 2026 Officethree Technologies. All Rights Reserved.
